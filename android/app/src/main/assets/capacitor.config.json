@@ -1,0 +1,6 @@
+{
+  "appId": "com.localhost.cv19",
+  "appName": "cv19",
+  "webDir": "www",
+  "npmClient": "npm"
+}

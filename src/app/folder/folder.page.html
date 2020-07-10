@@ -3,19 +3,92 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>{{folder}} {{name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="black" (click)='prosesLogout()'>
+        <ion-icon *ngIf="visible" slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="!visible" color="success" routerLink="/accedi/Login">
+        Login
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title size="large">{{folder}}</ion-title>
     </ion-toolbar>
   </ion-header>
+  <section id="banner" class="intro-bg parallex-bg section-padding">
+    <div class="container">
+      <div class="intro_text white-text div_zindex">
+        <h1>Scegli il viaggio adatto per te</h1>
+        <h5>Cerca i migliori Hotel, ristoranti ed attrazioni</h5>
+        <div class="search_form style3">
+          <div class="form-group text">
+            <ion-item>
+              <ion-input type="text" required [(ngModel)]='title' placeholder="Scegli per titolo..."></ion-input>
+            </ion-item>
+          </div>
+          <div class="form-group select">
+            <ion-item>
+              <ion-label>Scegli Città</ion-label>
+              <ion-select [(ngModel)]='citta' name="citta" value="0" okText="Scegli" cancelText="Chiudi">
+                <ion-select-option value="">Nessun valore </ion-select-option>
+                <ion-select-option value="Milano">Milano</ion-select-option>
+                <ion-select-option value="Napoli">Napoli</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+          <div class="form-group select">
+            <ion-item>
+              <ion-label>Scegli per Range di Prezzo</ion-label>
+              <ion-select [(ngModel)]='rangePrezzo' name="prezzo" value="0" okText="Scegli" cancelText="Chiudi">
+                <ion-select-option value="">Nessun valore </ion-select-option>
+                <ion-select-option value="0-50">0-50</ion-select-option>
+                <ion-select-option value="51-100">51-100</ion-select-option>
+                <ion-select-option value="101-200">101-200</ion-select-option>
+                <ion-select-option value="201-300">201-300</ion-select-option>
+                <ion-select-option value="301-400">301-400</ion-select-option>
+              </ion-select>
+            </ion-item>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+          </div>
+
+          <div class="form-group search_btn">
+            <ion-button expand="block" color="success" class="ion-no-margin" (click)="trySearch()"
+              [disabled]="disabledButton">Cerca</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dark-overlay"></div>
+  </section>
+  <ion-list>
+    <ion-row *ngFor="let lists of list">
+      <div class="col-md-12">
+        <div class="listing-wp">
+          <div class="listing-thumb">
+            <a href="/detail/{{lists.id}}">
+              <img class="img-fluid" src="{{'data:image/jpg;base64,' + lists.img}}">
+            </a>
+          </div>
+          <div class="listing-info-wp">
+            <h5> {{lists.title}} </h5>
+            <p> {{lists.description}}</p>
+            <div class="listing-categories">
+              <a href="#">{{lists.type}}</a>
+            </div>
+          </div>
+          <div class="listing-footer">
+            <i class="fa fa-map-marker"></i> {{lists.city}}
+          </div>
+        </div>
+      </div>
+    </ion-row>
+  </ion-list>
+
+
+
 </ion-content>

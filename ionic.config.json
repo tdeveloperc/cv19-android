@@ -1,5 +1,7 @@
 {
   "name": "CV19",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
