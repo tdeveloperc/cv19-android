@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Storage } from '@ionic/storage';
+import { element } from 'protractor';
 
 declare var google;
 
@@ -44,6 +45,9 @@ export class DetailPage implements OnInit {
   rating: number = 0;
   i: number = 0;
   index: number;
+  filter: number;
+  filtro: boolean = false;
+  newlist: any;
 
 
  
@@ -63,6 +67,20 @@ export class DetailPage implements OnInit {
       this.name = ' - Benvenuto '+this.datastorage.username;
       this.visible = true;
     });
+
+    this.storage.get('storage_xxxxx').then((res)=>{
+      this.newlist = res;
+   
+    });
+
+    this.storage.get('storage_xxxxxx').then((res)=>{
+      this.filtro = res;
+   
+    });
+   
+    this.storage.remove('storage_xxxxx');
+    this.storage.remove('storage_xxxxxx');
+   
   }
 
   async prosesLogout(){
@@ -259,6 +277,35 @@ async presentToast(a) {
   toast.present();
 }
 
+
+    
+ tryFilter() {
+   let j =0;
+  if(this.filter != null){
+    for(let i=0;i<this.lista.length; i++){
+      if(this.lista[i].rating == this.filter){
+        this.newlist.push(
+          {
+            username:this.lista[i].username  ,
+            title: this.lista[i].title,
+            recensione: this.lista[i].recensione,
+            rating: this.lista[i].rating
+          }
+        );
+       this.filtro = true;
+      }
+     }
+ } 
+
+ this.storage.set('storage_xxxxx',this.newlist);
+ this.storage.set('storage_xxxxxx',this.filtro); //create storage Session
+
+}
+
+deleteFilter() {
+ this.filtro = false;
+
+}
 
   }
 

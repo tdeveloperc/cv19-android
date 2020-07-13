@@ -62,10 +62,27 @@
     <div #map id="map"></div>
   </div>
 
-
-
-  <div *ngFor="let liste of lista" [fullscreen]="true">
+  <div [fullscreen]="true">
     <ion-item>
+      <ion-label>Filtra per stelle</ion-label>
+      <ion-select [(ngModel)]='filter' name="prezzo" value="0" okText="Scegli" cancelText="Chiudi">
+        <ion-select-option value="">Nessun valore </ion-select-option>
+        <ion-select-option value="1">1 Stella</ion-select-option>
+        <ion-select-option value="2">2 Stelle</ion-select-option>
+        <ion-select-option value="3">3 Stelle</ion-select-option>
+        <ion-select-option value="4">4 Stelle</ion-select-option>
+        <ion-select-option value="5">5 Stelle</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" color="success" class="ion-no-margin"
+          (click)="tryFilter()" [disabled]="disabledButton">Filtra</ion-button>
+          <ion-button expand="block" color="primary" class="ion-no-margin"
+          (click)="deleteFilter()" [disabled]="disabledButton">Cancella filtri</ion-button>
+  </div>
+
+  <div *ngIf="!filtro">
+  <div *ngFor="let liste of lista" [fullscreen]="true">
+    <ion-item id="{{liste.rating}}">
       <ion-avatar slot="start">
         <img src="../../assets/images/94x94.jpg">
       </ion-avatar>
@@ -112,6 +129,57 @@
       </ion-label>
     </ion-item>
   </div>
+</div>
+<div *ngIf="filtro">
+  <div  *ngFor="let liste of newlist" [fullscreen]="true">
+    <ion-item id="{{liste.rating}}">
+      <ion-avatar slot="start">
+        <img src="../../assets/images/94x94.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{liste.username}}</h2>
+        <h3>{{liste.titolo}}</h3>
+        <p>{{liste.recensione}}</p>
+        <h4 *ngIf="liste.rating==1">
+          <ion-icon color="primary" name="star" ></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+        </h4>
+        <h4 *ngIf="liste.rating==2">
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+        </h4>
+
+        <h4 *ngIf="liste.rating==3">
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+        </h4>
+        <h4 *ngIf="liste.rating==4">
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star-outline"></ion-icon>
+        </h4>
+        <h4 *ngIf="liste.rating==5">
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+          <ion-icon color="primary" name="star"></ion-icon>
+        </h4>
+      </ion-label>
+    </ion-item>
+  </div>
+</div>
 
     <div *ngIf="!visible">
       <div class="widget_title">
