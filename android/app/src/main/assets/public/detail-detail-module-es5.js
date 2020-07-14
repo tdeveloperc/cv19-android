@@ -589,7 +589,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (this.lista[i].rating == this.filter) {
                 this.newlist.push({
                   username: this.lista[i].username,
-                  title: this.lista[i].title,
+                  title: this.lista[i].titolo,
                   recensione: this.lista[i].recensione,
                   rating: this.lista[i].rating
                 });

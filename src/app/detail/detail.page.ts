@@ -271,7 +271,7 @@ async presentToast(a) {
         this.newlist.push(
           {
             username:this.lista[i].username  ,
-            title: this.lista[i].title,
+            title: this.lista[i].titolo,
             recensione: this.lista[i].recensione,
             rating: this.lista[i].rating
           }
