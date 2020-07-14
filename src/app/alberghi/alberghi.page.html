@@ -37,9 +37,7 @@
             <ion-item>
               <ion-label>Scegli Città</ion-label>
               <ion-select [(ngModel)]='citta' name="citta" value="0" okText="Scegli" cancelText="Chiudi">
-                <ion-select-option value="">Nessun valore </ion-select-option>
-                <ion-select-option value="Milano">Milano</ion-select-option>
-                <ion-select-option value="Napoli">Napoli</ion-select-option>
+                <ion-select-option *ngFor="let lists of list"  value="{{lists.city}}">{{lists.city}}</ion-select-option>
               </ion-select>
             </ion-item>
           </div>

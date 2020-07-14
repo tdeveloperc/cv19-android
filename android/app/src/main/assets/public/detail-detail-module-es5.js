@@ -33,7 +33,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header *ngFor=\"let lists of list\" [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>{{lists.title}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <!--<ion-button (click)=\"loadMap()\" shape=\"round\" color=\"dark\">\n        <ion-icon slot=\"start\" name=\"locate\"></ion-icon>\n        Dove sono\n      </ion-button>-->\n      <ion-button color=\"black\" (click)='prosesLogout()'>\n        <ion-icon *ngIf=\"visible\" slot=\"icon-only\" name=\"exit\"></ion-icon>\n      </ion-button>\n      <ion-button *ngIf=\"!visible\" color=\"success\" routerLink=\"/accedi/Login\">\n        Login\n      </ion-button>\n    </ion-buttons>\n\n  </ion-toolbar>\n</ion-header>\n<ion-content *ngFor=\"let lists of list\" [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Detail</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <h1 style=\"text-align: center;\">Guarda la galleria</h1>\n  <ion-slides>\n\n    <ion-slide>\n      <div class=\"slide\">\n        <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img1}}\">\n        <p>{{lists.description}}</p>\n      </div>\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img2}}\">\n\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img3}}\">\n\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img4}}\">\n\n    </ion-slide>\n\n  </ion-slides>\n\n\n\n\n  <div class=\"map-wrapper\">\n    <div id=\"map_center\">\n      <img src=\"assets/images/map-marker-icon.png\" />\n    </div>\n    <div #map id=\"map\"></div>\n  </div>\n\n  <div [fullscreen]=\"true\">\n    <ion-item>\n      <ion-label>Filtra per stelle</ion-label>\n      <ion-select [(ngModel)]='filter' name=\"prezzo\" value=\"0\" okText=\"Scegli\" cancelText=\"Chiudi\">\n        <ion-select-option value=\"\">Nessun valore </ion-select-option>\n        <ion-select-option value=\"1\">1 Stella</ion-select-option>\n        <ion-select-option value=\"2\">2 Stelle</ion-select-option>\n        <ion-select-option value=\"3\">3 Stelle</ion-select-option>\n        <ion-select-option value=\"4\">4 Stelle</ion-select-option>\n        <ion-select-option value=\"5\">5 Stelle</ion-select-option>\n      </ion-select>\n    </ion-item>\n    <ion-button expand=\"block\" color=\"success\" class=\"ion-no-margin\"\n          (click)=\"tryFilter()\" [disabled]=\"disabledButton\">Filtra</ion-button>\n          <ion-button expand=\"block\" color=\"primary\" class=\"ion-no-margin\"\n          (click)=\"deleteFilter()\" [disabled]=\"disabledButton\">Cancella filtri</ion-button>\n  </div>\n\n  <div *ngIf=\"!filtro\">\n  <div *ngFor=\"let liste of lista\" [fullscreen]=\"true\">\n    <ion-item id=\"{{liste.rating}}\">\n      <ion-avatar slot=\"start\">\n        <img src=\"../../assets/images/94x94.jpg\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{liste.username}}</h2>\n        <h3>{{liste.titolo}}</h3>\n        <p>{{liste.recensione}}</p>\n        <h4 *ngIf=\"liste.rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" ></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==2\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n\n        <h4 *ngIf=\"liste.rating==3\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==4\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==5\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n        </h4>\n      </ion-label>\n    </ion-item>\n  </div>\n</div>\n<div *ngIf=\"filtro\">\n  <div  *ngFor=\"let liste of newlist\" [fullscreen]=\"true\">\n    <ion-item id=\"{{liste.rating}}\">\n      <ion-avatar slot=\"start\">\n        <img src=\"../../assets/images/94x94.jpg\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{liste.username}}</h2>\n        <h3>{{liste.titolo}}</h3>\n        <p>{{liste.recensione}}</p>\n        <h4 *ngIf=\"liste.rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" ></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==2\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n\n        <h4 *ngIf=\"liste.rating==3\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==4\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==5\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n        </h4>\n      </ion-label>\n    </ion-item>\n  </div>\n</div>\n\n    <div *ngIf=\"!visible\">\n      <div class=\"widget_title\">\n        <h6>Accedere per scrivere recensione</h6>\n      </div>\n      <ion-button color=\"success\" routerLink=\"/accedi/Login\">\n        Login\n      </ion-button>\n    </div>\n    <div *ngIf=\"visible\">\n      <div class=\"widget_title\">\n        <h4>Scrivi una recensione</h4>\n      </div>\n      <div class=\"form-group\">\n        <ion-label position=\"floating\">Quante stelle vuoi dargli?</ion-label>\n        <div *ngIf=\"rating==0\">\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==2\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n\n        <div *ngIf=\"rating==3\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==4\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==5\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <ion-list no-lines padding-top>\n          <ion-item>\n\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Inserisci e-mail</ion-label>\n            <ion-input type=\"text\" placeholder=\"you@website.com\" [(ngModel)]='email'></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Inserisci titolo</ion-label>\n            <ion-input type=\"text\" placeholder=\"Titolo\" [(ngModel)]='titolo'></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Cosa pensi di loro?</ion-label>\n            <ion-textarea [(ngModel)]='recensione' cols=\"50\" rows=\"5\" placeholder=\"Scrivi la tua opinione\"  required></ion-textarea>\n          </ion-item>\n        </ion-list>\n        <ion-button expand=\"block\" color=\"success\" class=\"ion-no-margin\"\n          (click)=\"tryReview(lists.id, datastorage.username, datastorage.id)\" [disabled]=\"disabledButton\">Invia\n          Recensione</ion-button>\n      </div>\n    </div>\n\n  <!-- <ion-content>\n     Listings \n\n  </ion-content> -->\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header *ngFor=\"let lists of list\" [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>{{lists.title}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <!--<ion-button (click)=\"loadMap()\" shape=\"round\" color=\"dark\">\n        <ion-icon slot=\"start\" name=\"locate\"></ion-icon>\n        Dove sono\n      </ion-button>-->\n      <ion-button color=\"black\" (click)='prosesLogout()'>\n        <ion-icon *ngIf=\"visible\" slot=\"icon-only\" name=\"exit\"></ion-icon>\n      </ion-button>\n      <ion-button *ngIf=\"!visible\" color=\"success\" routerLink=\"/accedi/Login\">\n        Login\n      </ion-button>\n    </ion-buttons>\n\n  </ion-toolbar>\n</ion-header>\n<ion-content *ngFor=\"let lists of list\" [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Detail</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <h1 style=\"text-align: center;\">Guarda la galleria</h1>\n  <ion-slides>\n\n    <ion-slide>\n      <div class=\"slide\">\n        <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img1}}\">\n        <p>{{lists.description}}</p>\n      </div>\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img2}}\">\n\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img3}}\">\n\n    </ion-slide>\n\n    <ion-slide>\n      <img class=\"img-fluid\" src=\"{{'data:image/jpg;base64,' + lists.img4}}\">\n\n    </ion-slide>\n\n  </ion-slides>\n\n\n\n\n  <div class=\"map-wrapper\">\n    <div id=\"map_center\">\n      <img src=\"assets/images/map-marker-icon.png\" />\n    </div>\n    <div #map id=\"map\"></div>\n  </div>\n\n  <div [fullscreen]=\"true\">\n    <ion-item>\n      <ion-label>Filtra per stelle</ion-label>\n      <ion-select [(ngModel)]='filter' name=\"prezzo\" value=\"0\" okText=\"Scegli\" cancelText=\"Chiudi\" id=\"filter\">\n        <ion-select-option value=\"1\">1 Stella</ion-select-option>\n        <ion-select-option value=\"2\">2 Stelle</ion-select-option>\n        <ion-select-option value=\"3\">3 Stelle</ion-select-option>\n        <ion-select-option value=\"4\">4 Stelle</ion-select-option>\n        <ion-select-option value=\"5\">5 Stelle</ion-select-option>\n      </ion-select>\n    </ion-item>\n    <ion-button expand=\"block\" color=\"success\" class=\"ion-no-margin\"\n          (click)=\"tryFilter()\" [disabled]=\"disabledButton\">Filtra</ion-button>\n          <ion-button expand=\"block\" color=\"primary\" class=\"ion-no-margin\"\n          (click)=\"deleteFilter()\" [disabled]=\"disabledButton\">Cancella filtri</ion-button>\n  </div>\n\n  <div *ngIf=\"!filtro\">\n  <div *ngFor=\"let liste of lista\" [fullscreen]=\"true\">\n    <ion-item id=\"{{liste.rating}}\">\n      <ion-avatar slot=\"start\">\n        <img src=\"../../assets/images/94x94.jpg\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{liste.username}}</h2>\n        <h3>{{liste.titolo}}</h3>\n        <p>{{liste.recensione}}</p>\n        <h4 *ngIf=\"liste.rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" ></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==2\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n\n        <h4 *ngIf=\"liste.rating==3\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==4\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==5\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n        </h4>\n      </ion-label>\n    </ion-item>\n  </div>\n</div>\n<div *ngIf=\"filtro\">\n  <div  *ngFor=\"let liste of newlist\" [fullscreen]=\"true\">\n    <ion-item id=\"{{liste.rating}}\">\n      <ion-avatar slot=\"start\">\n        <img src=\"../../assets/images/94x94.jpg\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{liste.username}}</h2>\n        <h3>{{liste.titolo}}</h3>\n        <p>{{liste.recensione}}</p>\n        <h4 *ngIf=\"liste.rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" ></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==2\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n\n        <h4 *ngIf=\"liste.rating==3\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==4\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\"></ion-icon>\n        </h4>\n        <h4 *ngIf=\"liste.rating==5\">\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\"></ion-icon>\n        </h4>\n      </ion-label>\n    </ion-item>\n  </div>\n</div>\n\n    <div *ngIf=\"!visible\">\n      <div class=\"widget_title\">\n        <h6>Accedere per scrivere recensione</h6>\n      </div>\n      <ion-button color=\"success\" routerLink=\"/accedi/Login\">\n        Login\n      </ion-button>\n    </div>\n    <div *ngIf=\"visible\">\n      <div class=\"widget_title\">\n        <h4>Scrivi una recensione</h4>\n      </div>\n      <div class=\"form-group\">\n        <ion-label position=\"floating\">Quante stelle vuoi dargli?</ion-label>\n        <div *ngIf=\"rating==0\">\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==1\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==2\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n\n        <div *ngIf=\"rating==3\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==4\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star-outline\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <div *ngIf=\"rating==5\">\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(1)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(2)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(3)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(4)\"></ion-icon>\n          <ion-icon color=\"primary\" name=\"star\" (click)=\"onRate(5)\"></ion-icon>\n        </div>\n        <ion-list no-lines padding-top>\n          <ion-item>\n\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Inserisci e-mail</ion-label>\n            <ion-input type=\"text\" placeholder=\"you@website.com\" [(ngModel)]='email'></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Inserisci titolo</ion-label>\n            <ion-input type=\"text\" placeholder=\"Titolo\" [(ngModel)]='titolo'></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Cosa pensi di loro?</ion-label>\n            <ion-textarea [(ngModel)]='recensione' cols=\"50\" rows=\"5\" placeholder=\"Scrivi la tua opinione\"  required></ion-textarea>\n          </ion-item>\n        </ion-list>\n        <ion-button expand=\"block\" color=\"success\" class=\"ion-no-margin\"\n          (click)=\"tryReview(lists.id, datastorage.username, datastorage.id)\" [disabled]=\"disabledButton\">Invia\n          Recensione</ion-button>\n      </div>\n    </div>\n\n  <!-- <ion-content>\n     Listings \n\n  </ion-content> -->\n</ion-content>";
     /***/
   },
 
@@ -303,14 +303,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.name = ' - Benvenuto ' + _this.datastorage.username;
             _this.visible = true;
           });
-          this.storage.get('storage_xxxxx').then(function (res) {
-            _this.newlist = res;
-          });
-          this.storage.get('storage_xxxxxx').then(function (res) {
-            _this.filtro = res;
-          });
-          this.storage.remove('storage_xxxxx');
-          this.storage.remove('storage_xxxxxx');
         }
       }, {
         key: "prosesLogout",
@@ -346,7 +338,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onRate",
         value: function onRate(rate) {
-          console.log(rate);
           this.rating = rate;
         }
       }, {
@@ -378,7 +369,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this3.accsPrvds.postData(body, '/file_aksi.php').subscribe(function (res) {
               _this3.list = JSON.parse(JSON.stringify(res['result']));
-              console.log('lat ' + _this3.list[0]['latitudine'] + ' long ' + _this3.list[0]['longitudine']);
 
               _this3.loadMap(_this3.list[0]['latitudine'], _this3.list[0]['longitudine']);
             });
@@ -395,7 +385,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             maximumAge: 3600
           };
           this.geolocation.getCurrentPosition(options).then(function (resp) {
-            console.log('lat ' + latitudine + ' long ' + longitudine);
             _this4.latitude = resp.coords.latitude;
             _this4.longitude = resp.coords.longitude;
             var latLng = new google.maps.LatLng(latitudine, longitudine);
@@ -424,7 +413,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getAddressFromCoords(lattitude, longitude) {
           var _this5 = this;
 
-          console.log("getAddressFromCoords " + lattitude + " " + longitude);
           var options = {
             useLocale: true,
             maxResults: 5
@@ -473,60 +461,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
 
                     this.id_user = id_user;
-                    console.log('evento: ' + this.username);
-                    console.log(this.titolo);
-                    console.log(this.rating);
 
                     if (!(this.rating == 0)) {
-                      _context2.next = 10;
+                      _context2.next = 7;
                       break;
                     }
 
                     this.presentToast('Numero stelle richiesto');
-                    _context2.next = 29;
+                    _context2.next = 25;
                     break;
 
-                  case 10:
+                  case 7:
                     if (!(this.email == "")) {
-                      _context2.next = 14;
+                      _context2.next = 11;
                       break;
                     }
 
                     this.presentToast('E-mail Obbligatoria');
-                    _context2.next = 29;
+                    _context2.next = 25;
                     break;
 
-                  case 14:
+                  case 11:
                     if (!(this.titolo == "")) {
-                      _context2.next = 18;
+                      _context2.next = 15;
                       break;
                     }
 
                     this.presentToast('Titolo Richiesto');
-                    _context2.next = 29;
+                    _context2.next = 25;
                     break;
 
-                  case 18:
+                  case 15:
                     if (!(this.recensione == "")) {
-                      _context2.next = 22;
+                      _context2.next = 19;
                       break;
                     }
 
                     this.presentToast('Recensione Obbligatoria');
-                    _context2.next = 29;
+                    _context2.next = 25;
                     break;
 
-                  case 22:
+                  case 19:
                     this.disabledButton = true;
-                    _context2.next = 25;
+                    _context2.next = 22;
                     return this.loadingCtrl.create({
                       message: "Attendi per favore"
                     });
 
-                  case 25:
+                  case 22:
                     loader = _context2.sent;
                     loader.present();
-                    console.log('Nome: ' + this.recensione);
                     return _context2.abrupt("return", new Promise(function (resolve) {
                       var body = {
                         aksi: 'insertReview',
@@ -558,7 +542,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       });
                     }));
 
-                  case 29:
+                  case 25:
                   case "end":
                     return _context2.stop();
                 }
@@ -598,6 +582,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "tryFilter",
         value: function tryFilter() {
           var j = 0;
+          this.newlist = new Array();
 
           if (this.filter != null) {
             for (var i = 0; i < this.lista.length; i++) {
@@ -608,13 +593,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   recensione: this.lista[i].recensione,
                   rating: this.lista[i].rating
                 });
+                j = 1;
                 this.filtro = true;
               }
             }
-          }
 
-          this.storage.set('storage_xxxxx', this.newlist);
-          this.storage.set('storage_xxxxxx', this.filtro); //create storage Session
+            if (j == 0) {
+              this.presentToast('Nessuna corrispondenza con il filtro');
+              this.filtro = false;
+            }
+          }
         }
       }, {
         key: "deleteFilter",

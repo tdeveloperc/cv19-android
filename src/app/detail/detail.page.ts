@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Storage } from '@ionic/storage';
-import { element } from 'protractor';
+import { element, $ } from 'protractor';
 
 declare var google;
 
@@ -68,18 +68,8 @@ export class DetailPage implements OnInit {
       this.visible = true;
     });
 
-    this.storage.get('storage_xxxxx').then((res)=>{
-      this.newlist = res;
+    
    
-    });
-
-    this.storage.get('storage_xxxxxx').then((res)=>{
-      this.filtro = res;
-   
-    });
-   
-    this.storage.remove('storage_xxxxx');
-    this.storage.remove('storage_xxxxxx');
    
   }
 
@@ -96,7 +86,6 @@ export class DetailPage implements OnInit {
   }
 
   onRate(rate) {
-      console.log(rate)
       this.rating = rate;
     }
  
@@ -129,7 +118,6 @@ export class DetailPage implements OnInit {
 
     this.accsPrvds.postData(body,'/file_aksi.php').subscribe((res:any) =>  {
      this.list = JSON.parse(JSON.stringify(res['result']));
-     console.log('lat '+this.list[0]['latitudine']+' long '+this.list[0]['longitudine']);
      this.loadMap(this.list[0]['latitudine'],this.list[0]['longitudine']);
     
     });
@@ -140,7 +128,6 @@ export class DetailPage implements OnInit {
  loadMap(latitudine,longitudine) {
   let options = {timeout: 10000, enableHighAccuracy: true, maximumAge: 3600};
   this.geolocation.getCurrentPosition(options).then((resp) => {
-    console.log('lat '+latitudine+' long '+longitudine);
     this.latitude = resp.coords.latitude;
     this.longitude = resp.coords.longitude;
 
@@ -169,7 +156,6 @@ export class DetailPage implements OnInit {
 }
 
 getAddressFromCoords(lattitude, longitude) {
-  console.log("getAddressFromCoords " + lattitude + " " + longitude);
   let options: NativeGeocoderOptions = {
     useLocale: true,
     maxResults: 5
@@ -205,9 +191,6 @@ async tryReview(id_event,username, id_user) {
     this.username = username;
   }
   this.id_user = id_user;
-  console.log('evento: '+this.username);
-  console.log(this.titolo);
-  console.log(this.rating);
   if (this.rating == 0) {
     this.presentToast('Numero stelle richiesto');
   }
@@ -228,7 +211,6 @@ async tryReview(id_event,username, id_user) {
 
     loader.present();
 
-    console.log('Nome: ' + this.recensione);
     return new Promise(resolve => {
       let body = {
         aksi: 'insertReview',
@@ -281,6 +263,8 @@ async presentToast(a) {
     
  tryFilter() {
    let j =0;
+   
+   this.newlist = new Array();
   if(this.filter != null){
     for(let i=0;i<this.lista.length; i++){
       if(this.lista[i].rating == this.filter){
@@ -292,19 +276,20 @@ async presentToast(a) {
             rating: this.lista[i].rating
           }
         );
+       j = 1; 
        this.filtro = true;
       }
+     
      }
+      if(j==0){
+      this.presentToast('Nessuna corrispondenza con il filtro');
+      this.filtro = false;
+    }
  } 
-
- this.storage.set('storage_xxxxx',this.newlist);
- this.storage.set('storage_xxxxxx',this.filtro); //create storage Session
-
 }
 
 deleteFilter() {
  this.filtro = false;
-
 }
 
   }

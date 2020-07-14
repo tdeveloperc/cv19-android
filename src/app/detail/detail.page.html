@@ -65,8 +65,7 @@
   <div [fullscreen]="true">
     <ion-item>
       <ion-label>Filtra per stelle</ion-label>
-      <ion-select [(ngModel)]='filter' name="prezzo" value="0" okText="Scegli" cancelText="Chiudi">
-        <ion-select-option value="">Nessun valore </ion-select-option>
+      <ion-select [(ngModel)]='filter' name="prezzo" value="0" okText="Scegli" cancelText="Chiudi" id="filter">
         <ion-select-option value="1">1 Stella</ion-select-option>
         <ion-select-option value="2">2 Stelle</ion-select-option>
         <ion-select-option value="3">3 Stelle</ion-select-option>
