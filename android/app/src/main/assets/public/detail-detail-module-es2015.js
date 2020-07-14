@@ -325,7 +325,7 @@ let DetailPage = class DetailPage {
                 if (this.lista[i].rating == this.filter) {
                     this.newlist.push({
                         username: this.lista[i].username,
-                        title: this.lista[i].titolo,
+                        titolo: this.lista[i].titolo,
                         recensione: this.lista[i].recensione,
                         rating: this.lista[i].rating
                     });
