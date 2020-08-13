@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ToastController, LoadingController, AlertController, NavController } from '@ionic/angular';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { PostProvider } from '../providers/post-provider';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Storage } from '@ionic/storage';
+import { Storage  } from '@ionic/storage';
+
 @Component({
   selector: 'app-accedi',
   templateUrl: './accedi.page.html',
   styleUrls: ['./accedi.page.scss'],
 })
+
+
+
 export class AccediPage implements OnInit {
 
 
@@ -18,13 +20,12 @@ export class AccediPage implements OnInit {
 
   disabledButton;
   constructor(
-    private router: Router,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController,
     private accsPrvds: PostProvider,
-    private storage: Storage,
-    public navCtrl: NavController
+    public storage: Storage,
+    public navCtrl: NavController,
+    
 
   ) { }
 
